@@ -11,7 +11,7 @@
    [:link {:rel "stylesheet" :href "default.css"}]])
 
 (defn address-form [_]
-  [:div {:class "address-form"}
+  [:div {:class "address-form" :id "address-form"}
    [:h1 "Find my next election"]
    [:form {:action "/search" :method "post"}
     (anti-forgery-field)

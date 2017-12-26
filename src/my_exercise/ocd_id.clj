@@ -2,7 +2,8 @@
   (:require [clojure.string :as str]))
 
 (defn gen-us-ids
-  "generate ocd-ids for the US"
+  "generate ocd-ids for the US
+  todo: check that state is valid"
   ([state place]
    (let [state-only (str "ocd-division/country:us/state:" (str/lower-case state))]
      (if (str/blank? place)
