@@ -1,14 +1,14 @@
 (ns my-exercise.ocd-id
   (:require [clojure.string :as str]))
 
-(defn gen-us-id
+(defn gen-us-ids
   "generate ocd-ids for the US"
   ([state place]
-   (cond-> "ocd-division/country:us/state:"
-           (not (str/blank? state))
-           (str (str/lower-case state))
-
-           (and (not (str/blank? state)) (not (str/blank? place)))
-           (str "/place:" (-> place str/lower-case (str/replace #" " "_")))))
+   (let [state-only (str "ocd-division/country:us/state:" (str/lower-case state))]
+     (if (str/blank? place)
+       [state-only]
+       [state-only (str state-only
+                        "/place:"
+                        (-> place str/lower-case (str/replace #" " "_")))])))
   ([state]
-   (gen-us-id state nil)))
+   (gen-us-ids state nil)))
