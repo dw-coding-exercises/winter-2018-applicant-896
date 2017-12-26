@@ -6,7 +6,11 @@
 
 (def api-base "https://api.turbovote.org/elections/upcoming")
 
-(defn results-view [results]
+(defn results-view
+  "render the search results
+  todo: better styling
+  todo: add UI displaying the different methods for voting and registering"
+  [results]
   [:div
    [:h2 (str "Results (" (count results) ")")]
    (for [result results]
